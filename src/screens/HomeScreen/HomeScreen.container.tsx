@@ -20,20 +20,18 @@ function HomeScreen() {
 
   const [idToDelete, setIdToDelete] = useState<number>();
 
-  /* `const { data , isLoading } = useGetProductsQuery();` is using the `useGetProductsQuery` hook
-    from the `productApi` service to fetch data from the server. */
-  const { data, isLoading } = useGetProductsQuery();
+  const { data, isLoading } = useGetProductsQuery(); //Get Products Query
 
-  const [deleteItemFromBackend, result] = useDeleteProductMutation();
+  const [deleteItemFromBackend, { isLoading: isDeleting, isSuccess, isError }] =
+    useDeleteProductMutation(); //Delete Mutation
+
+  const products = useSelector(selectProducts); // Fetch products from the Redux store
 
   useEffect(() => {
     if (data) {
       dispatch(setProducts(data)); // Dispatch setProducts action with the fetched data
     }
   }, [data, dispatch]);
-
-  console.log('RESULT', result);
-  const { isLoading: isDeleting, isSuccess, isError } = result;
 
   const deleteProductHandler = (id: number) => {
     setIdToDelete(id);
@@ -58,8 +56,6 @@ function HomeScreen() {
   const pressItemhandler = (id: number) => {
     navigation.navigate('ProductDetails', { productId: id });
   };
-
-  const products = useSelector(selectProducts); // Fetch products from the Redux store
 
   return (
     <HomeScreenView
