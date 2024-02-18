@@ -5,10 +5,7 @@ import styles from './EmptyList.styles';
 const EmptyList = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Your wishlist is empty!</Text>
-      <Text style={styles.description}>
-        Explore more and shortlist some items
-      </Text>
+      <Text style={styles.title}>Your list is empty!</Text>
     </View>
   );
 };

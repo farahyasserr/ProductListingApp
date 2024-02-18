@@ -8,20 +8,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: colors.primary,
   },
-  description: {
-    color: colors.primary,
-    marginBottom: 30,
-  },
   container: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.white,
     height: '100%',
-  },
-  buttonText: {
-    color: colors.secondary,
-    fontSize: 16,
-    fontWeight: 'bold',
   },
 });
 
