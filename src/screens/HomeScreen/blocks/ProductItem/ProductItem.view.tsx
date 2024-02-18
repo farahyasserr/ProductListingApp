@@ -1,22 +1,42 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
+import React, { useState } from 'react';
 import { ShoppingCart } from 'lucide-react-native';
 import { colors } from '../../../../theme/Colors';
 import styles from './ProductItem.styles';
 import Product from '../../../../types/Product';
 import { currency } from '../../../../data/Currency';
 import { Trash2 } from 'lucide-react-native';
+import { Loader } from '../../../../components';
 
 interface Props {
   item: Product;
   addToCartHandler: () => void;
   deleteProductHandler: (id: number) => void;
   pressItemhandler: (id: number) => void;
+  deleteLoader: Boolean;
 }
 
 function ProductItem(props: Props) {
-  const { item, addToCartHandler, deleteProductHandler, pressItemhandler } =
-    props;
+  const {
+    item,
+    addToCartHandler,
+    deleteProductHandler,
+    pressItemhandler,
+    deleteLoader,
+  } = props;
+
+  const [idToDelete, setIdToDelete] = useState<number>();
+
+  const deleteItem = (id: number) => {
+    setIdToDelete(id);
+    deleteProductHandler(id);
+  };
 
   return (
     <TouchableOpacity
@@ -44,9 +64,13 @@ function ProductItem(props: Props) {
           color={colors.black}
           style={styles.cartIcon}
         />
-        <TouchableOpacity onPress={() => deleteProductHandler(item.id)}>
-          <Trash2 size={20} color={colors.primary} />
-        </TouchableOpacity>
+        {deleteLoader && idToDelete === item.id ? (
+          <ActivityIndicator size={18} color={colors.gray} />
+        ) : (
+          <TouchableOpacity onPress={() => deleteItem(item.id)}>
+            <Trash2 size={20} color={colors.primary} />
+          </TouchableOpacity>
+        )}
       </View>
     </TouchableOpacity>
   );

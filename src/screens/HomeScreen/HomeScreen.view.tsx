@@ -12,6 +12,7 @@ interface Props {
   deleteProductHandler: (id: number) => void;
   addToCartHandler: () => void;
   pressItemhandler: (id: number) => void;
+  deleteLoader: Boolean;
 }
 
 function HomeScreenView({
@@ -20,6 +21,7 @@ function HomeScreenView({
   addToCartHandler,
   deleteProductHandler,
   pressItemhandler,
+  deleteLoader,
 }: Props) {
   return (
     <View style={styles.mainContainer}>
@@ -40,6 +42,7 @@ function HomeScreenView({
                 deleteProductHandler={deleteProductHandler}
                 addToCartHandler={addToCartHandler}
                 pressItemhandler={pressItemhandler}
+                deleteLoader={deleteLoader}
               />
             )}
             keyExtractor={item => item.id.toString()}

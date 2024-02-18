@@ -16,16 +16,20 @@ export const productsApi = apiInstance.injectEndpoints({
         method: 'GET',
       }),
     }),
-    deleteProduct: builder.query<Product, number>({
+    deleteProduct: builder.mutation<Product, number>({
       query: productId => ({
         url: `/products/${productId}`,
         method: 'DELETE',
       }),
     }),
-    updateProduct: builder.query<Product, number>({
-      query: productId => ({
+    updateProduct: builder.mutation<
+      Product,
+      { productId: number; productData: Product }
+    >({
+      query: ({ productId, productData }) => ({
         url: `/products/${productId}`,
         method: 'PUT',
+        body: productData, // Include the product data as the request body
       }),
     }),
   }),
@@ -36,6 +40,6 @@ export const productsApi = apiInstance.injectEndpoints({
 export const {
   useGetProductsQuery,
   useGetProductDetailsQuery,
-  useDeleteProductQuery,
-  useUpdateProductQuery,
+  useDeleteProductMutation,
+  useUpdateProductMutation,
 } = productsApi;

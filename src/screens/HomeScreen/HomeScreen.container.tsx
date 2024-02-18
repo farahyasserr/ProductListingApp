@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import HomeScreenView from './HomeScreen.view';
-import { useGetProductsQuery } from '../../services/product/productApi';
+import {
+  useDeleteProductMutation,
+  useGetProductsQuery,
+} from '../../services/product/productApi';
 import {
   deleteProduct,
   setProducts,
@@ -10,13 +13,18 @@ import { HomeStackNavType } from '../../navigation/Home/HomeStack';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectProducts } from '../../store/selectors/ProductsSelector';
-import Product from '../../types/Product';
 
 function HomeScreen() {
   const dispatch = useDispatch();
+  const navigation = useNavigation<HomeStackNavType<'Home'>>();
+
+  const [idToDelete, setIdToDelete] = useState<number>();
+
   /* `const { data , isLoading } = useGetProductsQuery();` is using the `useGetProductsQuery` hook
     from the `productApi` service to fetch data from the server. */
   const { data, isLoading } = useGetProductsQuery();
+
+  const [deleteItemFromBackend, result] = useDeleteProductMutation();
 
   useEffect(() => {
     if (data) {
@@ -24,11 +32,24 @@ function HomeScreen() {
     }
   }, [data, dispatch]);
 
-  const navigation = useNavigation<HomeStackNavType<'Home'>>();
+  console.log('RESULT', result);
+  const { isLoading: isDeleting, isSuccess, isError } = result;
 
   const deleteProductHandler = (id: number) => {
-    dispatch(deleteProduct(id));
+    setIdToDelete(id);
+    deleteItemFromBackend(id);
   };
+
+  useEffect(() => {
+    if (isSuccess && idToDelete) {
+      //delete from redux
+      dispatch(deleteProduct(idToDelete));
+      return;
+    }
+    if (isError) {
+      Alert.alert('Internal server error');
+    }
+  }, [isSuccess, isError]);
 
   const addToCartHandler = () => {
     Alert.alert('Coming soon!');
@@ -47,6 +68,7 @@ function HomeScreen() {
       addToCartHandler={addToCartHandler}
       deleteProductHandler={deleteProductHandler}
       pressItemhandler={pressItemhandler}
+      deleteLoader={isDeleting}
     />
   );
 }
