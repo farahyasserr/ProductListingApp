@@ -8,7 +8,15 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginStart: 10,
   },
-  mainContainer: { backgroundColor: colors.white, height: '100%' },
+  mainContainer: {
+    backgroundColor: colors.white,
+    height: '100%',
+  },
+  listContainer: {
+    paddingHorizontal: 14,
+    backgroundColor: colors.white,
+    height: '100%',
+  },
 });
 
 export default styles;

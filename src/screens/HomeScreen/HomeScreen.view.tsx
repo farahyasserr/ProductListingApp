@@ -25,15 +25,10 @@ function HomeScreenView({
 }: Props) {
   return (
     <View style={styles.mainContainer}>
-      {isLoading ? (
+      {isLoading || !products ? (
         <Loader />
       ) : (
-        <View
-          style={{
-            paddingHorizontal: 14,
-            backgroundColor: colors.white,
-            height: '100%',
-          }}>
+        <View style={styles.listContainer}>
           <FlatList
             data={products}
             renderItem={({ item }) => (

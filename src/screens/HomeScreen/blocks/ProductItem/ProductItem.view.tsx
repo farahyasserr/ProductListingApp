@@ -12,7 +12,6 @@ import styles from './ProductItem.styles';
 import Product from '../../../../types/Product';
 import { currency } from '../../../../data/Currency';
 import { Trash2 } from 'lucide-react-native';
-import { Loader } from '../../../../components';
 
 interface Props {
   item: Product;
