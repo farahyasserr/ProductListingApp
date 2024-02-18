@@ -11,7 +11,7 @@ interface Props {
   item: Product;
   addToCartHandler: () => void;
   deleteProductHandler: (id: number) => void;
-  pressItemhandler: (product: Product) => void;
+  pressItemhandler: (id: number) => void;
 }
 
 function ProductItem(props: Props) {
@@ -21,7 +21,7 @@ function ProductItem(props: Props) {
   return (
     <TouchableOpacity
       style={styles.mainContainer}
-      onPress={() => pressItemhandler(item)}>
+      onPress={() => pressItemhandler(item.id)}>
       <View style={styles.imageAndTextContainer}>
         <Image
           source={{ uri: item.image }}

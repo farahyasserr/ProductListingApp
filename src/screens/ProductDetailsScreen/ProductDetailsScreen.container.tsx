@@ -6,22 +6,26 @@ import { colors } from '../../theme/Colors';
 import { Pencil } from 'lucide-react-native';
 import { selectProducts } from '../../store/selectors/ProductsSelector';
 import { useSelector } from 'react-redux';
+import { useGetProductDetailsQuery } from '../../services/product/productApi';
 
 interface Props extends HomeStackPropsType<'ProductDetails'> {}
 
 function ProductDetailsScreen({ navigation, route }: Props) {
-  const productItem = route.params?.productItem;
+  const productId = route.params?.productId;
+
+  const { data: productItem, isLoading } = useGetProductDetailsQuery(productId);
 
   const updateItemHandler = () => {
-    navigation.navigate('UpdateProduct', { productItem: productItem });
+    productItem &&
+      navigation.navigate('UpdateProduct', { productItem: productItem });
   };
-  const products = useSelector(selectProducts);
+  // const products = useSelector(selectProducts);
 
   /* The `useMemo` hook is being used to memoize the result of finding a specific product from the `products`
 array based on the `productItem.id` whenever the products change */
-  const productDetails = useMemo(() => {
-    return products.find(p => p.id === productItem.id);
-  }, [products]);
+  // const productDetails = useMemo(() => {
+  //   return products.find(p => p.id === productItem.id);
+  // }, [products]);
 
   useEffect(() => {
     // Customize header options
@@ -34,7 +38,7 @@ array based on the `productItem.id` whenever the products change */
     });
   }, [productItem]);
 
-  return <ProductDetailsView productItem={productDetails} />;
+  return <ProductDetailsView productItem={productItem} isLoading={isLoading} />;
 }
 
 export default ProductDetailsScreen;

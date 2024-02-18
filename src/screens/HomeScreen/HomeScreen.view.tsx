@@ -11,7 +11,7 @@ interface Props {
   products?: Product[];
   deleteProductHandler: (id: number) => void;
   addToCartHandler: () => void;
-  pressItemhandler: (product: Product) => void;
+  pressItemhandler: (id: number) => void;
 }
 
 function HomeScreenView({
@@ -22,11 +22,9 @@ function HomeScreenView({
   pressItemhandler,
 }: Props) {
   return (
-    <View style={{ backgroundColor: colors.white, height: '100%' }}>
+    <View style={styles.mainContainer}>
       {isLoading ? (
         <Loader />
-      ) : false ? (
-        <EmptyList />
       ) : (
         <View
           style={{
@@ -49,6 +47,7 @@ function HomeScreenView({
             ListHeaderComponent={() => (
               <Text style={styles.listHeaderText}>Products</Text>
             )}
+            ListEmptyComponent={() => <EmptyList />}
           />
         </View>
       )}

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../theme/Colors';
 
 const styles = StyleSheet.create({
   listHeaderText: {
@@ -7,6 +8,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginStart: 10,
   },
+  mainContainer: { backgroundColor: colors.white, height: '100%' },
 });
 
 export default styles;

@@ -19,7 +19,7 @@ const Stack = createStackNavigator<HomeStackParamList>();
 export type HomeStackParamList = {
   Home: undefined;
   ProductDetails: {
-    productItem: Product;
+    productId: number;
   };
   UpdateProduct: {
     productItem: Product;

@@ -7,14 +7,21 @@ import ProductInfo from './blocks/ProductInfo.view';
 
 interface Props {
   productItem?: Product;
+  isLoading: Boolean;
 }
 
-function ProductDetailsView({ productItem }: Props) {
+function ProductDetailsView({ productItem, isLoading }: Props) {
   return (
-    <ScrollView style={styles.scrollview}>
-      <Image source={{ uri: productItem?.image }} style={styles.image} />
-      <ProductInfo item={productItem} />
-    </ScrollView>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ScrollView style={styles.scrollview}>
+          <Image source={{ uri: productItem?.image }} style={styles.image} />
+          <ProductInfo item={productItem} />
+        </ScrollView>
+      )}
+    </>
   );
 }
 

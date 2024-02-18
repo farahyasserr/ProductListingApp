@@ -34,8 +34,8 @@ function HomeScreen() {
     Alert.alert('Coming soon!');
   };
 
-  const pressItemhandler = (product: Product) => {
-    navigation.navigate('ProductDetails', { productItem: product });
+  const pressItemhandler = (id: number) => {
+    navigation.navigate('ProductDetails', { productId: id });
   };
 
   const products = useSelector(selectProducts); // Fetch products from the Redux store
