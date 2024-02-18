@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import { colors } from '../../../theme/Colors';
 
 const styles = StyleSheet.create({
@@ -9,4 +9,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles
+export default styles;

@@ -1,1 +1,1 @@
-export const currency = "AED";
+export const currency = 'AED';

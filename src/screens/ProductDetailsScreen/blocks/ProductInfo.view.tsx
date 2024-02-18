@@ -9,7 +9,7 @@ interface Props {
 }
 
 function ProductInfo(props: Props) {
-  const {item} = props;
+  const { item } = props;
 
   return (
     <View style={styles.infoContainer}>

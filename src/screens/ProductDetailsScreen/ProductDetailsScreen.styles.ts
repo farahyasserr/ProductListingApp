@@ -1,9 +1,9 @@
-import {Dimensions, StyleSheet} from 'react-native';
-import {colors} from '../../theme/Colors';
+import { Dimensions, StyleSheet } from 'react-native';
+import { colors } from '../../theme/Colors';
 
 const styles = StyleSheet.create({
-  scrollview:{
-    backgroundColor: colors.white
+  scrollview: {
+    backgroundColor: colors.white,
   },
   image: {
     width: '100%',

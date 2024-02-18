@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
-import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native'
-import styles from './TextInput.styles'
+import React, { useState } from 'react';
+import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
+import styles from './TextInput.styles';
 import { colors } from '../../../theme/Colors';
 
-interface Props extends TextInputProps{
-    style?: StyleProp<TextStyle>; // Accepts any additional style prop
-  }
+interface Props extends TextInputProps {
+  style?: StyleProp<TextStyle>; // Accepts any additional style prop
+}
 
 function MyTextInput(props: Props) {
-    const { style } = props
-    const [isFocused, setIsFocused] = useState<boolean>(false);
+  const { style } = props;
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
-    const handleFocus = () => {
-      setIsFocused(true);
-    };
-  
-    const handleBlur = () => {
-      setIsFocused(false);
-    };
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
 
-    return (
-        <TextInput
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
+  return (
+    <TextInput
       style={[
         styles.input,
         style,
@@ -30,7 +30,7 @@ function MyTextInput(props: Props) {
       onBlur={handleBlur}
       {...props}
     />
-    )
+  );
 }
 
-export default MyTextInput
+export default MyTextInput;

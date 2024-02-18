@@ -1,9 +1,7 @@
-import { HomeStack } from "./Home/HomeStack";
+import { HomeStack } from './Home/HomeStack';
 
-function MainNavigator(){
-  return (
-    <HomeStack />
-  )
+function MainNavigator() {
+  return <HomeStack />;
 }
 
 export default MainNavigator;
