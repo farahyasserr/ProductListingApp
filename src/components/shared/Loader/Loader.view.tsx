@@ -5,7 +5,7 @@ import { colors } from '../../../theme/Colors'
 
 function Loader() {
     return (
-        <View style={styles.loaderContainer} testID='loader'>
+        <View style={styles.loaderContainer}>
             <ActivityIndicator size={30} color={colors.gray} />
         </View> 
     )
