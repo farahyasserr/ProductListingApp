@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 16,
-    maxWidth: 230,
   },
   price: {
     color: colors.primary,
@@ -33,6 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingTop: 12,
   },
 });
 

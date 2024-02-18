@@ -10,13 +10,13 @@ interface Props {
 
 function ProductInfo(props: Props) {
   const { item } = props;
+  console.log('rate', item);
   return (
     <View style={styles.infoContainer}>
+      <Text style={styles.title}>{item?.title}</Text>
+
       <View style={styles.horizontalSubContainer}>
-        <View>
-          <Text style={styles.title}>{item?.title}</Text>
-          <Rating rating={item?.rate} />
-        </View>
+        <Rating rating={item?.rating!.rate} count={item?.rating.count} />
         <Text style={styles.price}>
           {item?.price} {currency}
         </Text>

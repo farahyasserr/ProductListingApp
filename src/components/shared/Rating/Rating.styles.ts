@@ -1,13 +1,16 @@
-import { StyleSheet } from "react-native";
-import { colors } from "../../../theme/Colors";
+import { StyleSheet } from 'react-native';
+import { colors } from '../../../theme/Colors';
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     alignSelf: 'flex-start',
-    paddingTop: 12,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
-  reviewsText:{marginStart: 8, color: colors.gray, textDecorationLine: 'underline'}
-})
+  reviewsText: {
+    marginStart: 8,
+    color: colors.gray,
+    textDecorationLine: 'underline',
+  },
+});
 
-export default styles
+export default styles;
