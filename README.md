@@ -1,6 +1,23 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# Product Listing App
+## Description
+This project is a mobile application for managing and displaying list of products. 
+It allows users to view the list of products, view product details, and perform various actions such as updating or deleting products.
+
+## Features
+- View a list of products
+- Update product information
+- Delete product
+- Update Product
+
+## Technologies Used
+- React Native cli
+- Redux Toolkit
+- React Navigation
+- RTK Query
+- Typescript
+
+## Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
