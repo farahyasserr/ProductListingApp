@@ -2,7 +2,7 @@ import { Text, View } from 'react-native';
 import React from 'react';
 import { Divider } from '../../../components';
 import Product from '../../../types/Product';
-import styles from './productInfo.styles';
+import styles from './ProductInfo.styles';
 import { currency } from '../../../data/Currency';
 interface Props {
   item?: Product;

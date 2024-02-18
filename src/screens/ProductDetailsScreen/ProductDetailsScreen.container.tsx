@@ -1,44 +1,45 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import ProductDetailsView from './ProductDetailsScreen.view';
 import { HomeStackPropsType } from '../../navigation/Home/HomeStack';
 import { TouchableOpacity } from 'react-native';
 import { colors } from '../../theme/Colors';
 import { Pencil } from 'lucide-react-native';
-import { selectProducts } from '../../store/selectors/ProductsSelector';
+import { selectedProduct } from '../../store/selectors/ProductsSelector';
 import { useSelector } from 'react-redux';
-import { useGetProductDetailsQuery } from '../../services/product/productApi';
+import useGetProductDetails from './hooks/useGetProductDetails';
+import styles from './ProductDetailsScreen.styles';
 
 interface Props extends HomeStackPropsType<'ProductDetails'> {}
 
 function ProductDetailsScreen({ navigation, route }: Props) {
   const productId = route.params?.productId;
+  const { isLoading } = useGetProductDetails({ productId });
 
-  const { data: productItem, isLoading } = useGetProductDetailsQuery(productId);
+  const selectedProductDetails = useSelector(selectedProduct);
 
   const updateItemHandler = () => {
-    productItem &&
-      navigation.navigate('UpdateProduct', { productItem: productItem });
+    navigation.navigate('UpdateProduct', {
+      productItem: selectedProductDetails!,
+    });
   };
-  // const products = useSelector(selectProducts);
-
-  /* The `useMemo` hook is being used to memoize the result of finding a specific product from the `products`
-array based on the `productItem.id` whenever the products change */
-  // const productDetails = useMemo(() => {
-  //   return products.find(p => p.id === productItem.id);
-  // }, [products]);
 
   useEffect(() => {
     // Customize header options
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity style={{ marginEnd: 12 }} onPress={updateItemHandler}>
+        <TouchableOpacity style={styles.editIcon} onPress={updateItemHandler}>
           <Pencil size={20} color={colors.black} />
         </TouchableOpacity>
       ),
     });
-  }, [productItem]);
+  }, [selectedProductDetails]);
 
-  return <ProductDetailsView productItem={productItem} isLoading={isLoading} />;
+  return (
+    <ProductDetailsView
+      productItem={selectedProductDetails}
+      isLoading={isLoading}
+    />
+  );
 }
 
 export default ProductDetailsScreen;

@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height / 3,
     resizeMode: 'contain',
   },
+  editIcon: {
+    marginEnd: 12,
+  },
 });
 
 export default styles;
