@@ -26,7 +26,6 @@ function HomeScreen() {
     const navigation = useNavigation<HomeStackNavType<'Home'>>();
 
     const deleteProductHandler = (id: number)=>{
-      console.log(" hsiuhowidhknn", id)
       dispatch(deleteProduct(id))
     }
 

@@ -16,7 +16,6 @@ function UpdateProductScreen({route, navigation}: Props) {
     const productItem = route.params?.productItem;
 
     const handleSubmitButton = (updatedProduct: Product) => {
-        console.log("Submit buttonnnnn", updatedProduct);
         dispatch(updateProduct(updatedProduct));
         navigation.goBack();
     }
