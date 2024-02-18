@@ -10,7 +10,6 @@ interface Props {
 
 function ProductInfo(props: Props) {
   const { item } = props;
-  console.log('rate', item);
   return (
     <View style={styles.infoContainer}>
       <Text style={styles.title}>{item?.title}</Text>
