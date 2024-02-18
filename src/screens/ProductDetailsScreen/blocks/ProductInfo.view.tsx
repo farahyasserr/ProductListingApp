@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 import React from 'react';
-import { Divider } from '../../../components';
+import { Divider, Rating } from '../../../components';
 import Product from '../../../types/Product';
 import styles from './ProductInfo.styles';
 import { currency } from '../../../data/Currency';
@@ -10,12 +10,12 @@ interface Props {
 
 function ProductInfo(props: Props) {
   const { item } = props;
-
   return (
     <View style={styles.infoContainer}>
       <View style={styles.horizontalSubContainer}>
         <View>
           <Text style={styles.title}>{item?.title}</Text>
+          <Rating rating={item?.rate} />
         </View>
         <Text style={styles.price}>
           {item?.price} {currency}
